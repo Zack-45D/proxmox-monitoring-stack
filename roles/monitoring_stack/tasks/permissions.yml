@@ -1,0 +1,13 @@
+- name: Set Grafana data directory ownership
+  ansible.builtin.file:
+    path: "{{ monitoring_root }}/grafana/data"
+    owner: "472"
+    group: "472"
+    recurse: true
+
+- name: Set Prometheus data directory ownership
+  ansible.builtin.file:
+    path: "{{ monitoring_root }}/prometheus/data"
+    owner: nobody
+    group: nogroup
+    recurse: true

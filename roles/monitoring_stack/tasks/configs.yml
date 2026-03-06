@@ -21,3 +21,15 @@
     src: docker-compose.yml.j2
     dest: "{{ monitoring_root }}/compose/docker-compose.yml"
     mode: "0644"
+
+- name: Render Ceph alert rules
+  ansible.builtin.template:
+    src: ceph.yml.j2
+    dest: "{{ monitoring_root }}/prometheus/rules/ceph.yml"
+    mode: "0644"
+
+- name: Render Proxmox alert rules
+  ansible.builtin.template:
+    src: proxmox.yml.j2
+    dest: "{{ monitoring_root }}/prometheus/rules/proxmox.yml"
+    mode: "0644"

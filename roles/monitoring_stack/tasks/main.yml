@@ -9,3 +9,9 @@
 
 - name: Run config tasks
   ansible.builtin.import_tasks: configs.yml
+
+- name: Run permissions tasks
+  ansible.builtin.import_tasks: permissions.yml
+
+- name: Run compose tasks
+  ansible.builtin.import_tasks: compose.yml
