@@ -14,4 +14,4 @@
   ansible.builtin.import_tasks: permissions.yml
 
 - name: Run compose tasks
-  ansible.builtin.import_tasks: compose.yml
+  ansible.builtin.import_tasks: deploy_stack.yml
