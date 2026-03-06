@@ -1,0 +1,23 @@
+- name: Render Prometheus config
+  ansible.builtin.template:
+    src: prometheus.yml.j2
+    dest: "{{ monitoring_root }}/prometheus/prometheus.yml"
+    mode: "0644"
+
+- name: Render Alertmanager config
+  ansible.builtin.template:
+    src: alertmanager.yml.j2
+    dest: "{{ monitoring_root }}/alertmanager/alertmanager.yml"
+    mode: "0644"
+
+- name: Render pve-exporter config
+  ansible.builtin.template:
+    src: pve.yml.j2
+    dest: "{{ monitoring_root }}/pve-exporter/pve.yml"
+    mode: "0600"
+
+- name: Render Docker Compose config
+  ansible.builtin.template:
+    src: docker-compose.yml.j2
+    dest: "{{ monitoring_root }}/compose/docker-compose.yml"
+    mode: "0644"
