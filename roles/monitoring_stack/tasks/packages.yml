@@ -1,0 +1,16 @@
+- name: Install base packages
+  ansible.builtin.apt:
+    name:
+      - curl
+      - wget
+      - vim
+      - jq
+      - ca-certificates
+      - gnupg
+      - lsb-release
+      - apt-transport-https
+      - software-properties-common
+      - net-tools
+      - unzip
+    state: present
+    update_cache: true
