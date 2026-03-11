@@ -628,9 +628,6 @@
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
           "custom": {
             "align": "auto",
             "cellOptions": {
@@ -641,23 +638,7 @@
             },
             "inspect": false
           },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "red",
-                  "index": 1,
-                  "text": "Stopped"
-                },
-                "1": {
-                  "color": "green",
-                  "index": 0,
-                  "text": "Running"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -679,6 +660,32 @@
               "options": "Status"
             },
             "properties": [
+              {
+                "id": "mappings",
+                "value": [
+                  {
+                    "options": {
+                      "0": {
+                        "color": "red",
+                        "index": 1,
+                        "text": "Stopped"
+                      },
+                      "1": {
+                        "color": "green",
+                        "index": 0,
+                        "text": "Running"
+                      }
+                    },
+                    "type": "value"
+                  }
+                ]
+              },
+              {
+                "id": "color",
+                "value": {
+                  "mode": "thresholds"
+                }
+              },
               {
                 "id": "custom.cellOptions",
                 "value": {
@@ -810,21 +817,35 @@
               "job 2": true,
               "job 3": true,
               "job 4": true,
+              "name 2": true,
+              "name 3": true,
+              "name 4": true,
+              "node 2": true,
+              "node 3": true,
+              "node 4": true,
               "type": true,
               "type 1": true,
               "type 2": true,
               "type 3": true,
               "type 4": true
             },
-            "indexByName": {},
+            "indexByName": {
+              "CPU": 5,
+              "ID": 0,
+              "Memory": 4,
+              "Name": 1,
+              "Node": 3,
+              "Status": 2,
+              "Uptime": 6
+            },
             "renameByName": {
               "Value #cpu": "CPU",
               "Value #mem": "Memory",
               "Value #status": "Status",
               "Value #uptime": "Uptime",
               "id": "ID",
-              "name": "Name",
-              "node": "Node"
+              "name 1": "Name",
+              "node 1": "Node"
             }
           }
         }
@@ -3326,8 +3347,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Proxmox VE - pve-exporter4",
-  "uid": "pve-exporter4",
-  "version": 5,
+  "title": "Proxmox VE - pve-exporter",
+  "uid": "pve-exporter",
+  "version": 1,
   "weekStart": ""
 }

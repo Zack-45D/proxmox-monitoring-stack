@@ -7,8 +7,8 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: "ZFS pool unhealthy on {{ \"{{ $labels.instance }}\" }}"
-          description: "Pool {{ \"{{ $labels.pool }}\" }} is not ONLINE."
+          summary: "ZFS pool unhealthy on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Pool {% raw %}{{ $labels.pool }}{% endraw %} is not ONLINE."
 
       - alert: ZfsPoolReadErrors
         expr: zfs_pool_read_errors > 0
@@ -16,8 +16,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS pool read errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Pool {{ \"{{ $labels.pool }}\" }} has read errors."
+          summary: "ZFS pool read errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Pool {% raw %}{{ $labels.pool }}{% endraw %} has read errors."
 
       - alert: ZfsPoolWriteErrors
         expr: zfs_pool_write_errors > 0
@@ -25,8 +25,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS pool write errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Pool {{ \"{{ $labels.pool }}\" }} has write errors."
+          summary: "ZFS pool write errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Pool {% raw %}{{ $labels.pool }}{% endraw %} has write errors."
 
       - alert: ZfsPoolChecksumErrors
         expr: zfs_pool_checksum_errors > 0
@@ -34,8 +34,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS pool checksum errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Pool {{ \"{{ $labels.pool }}\" }} has checksum errors."
+          summary: "ZFS pool checksum errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Pool {% raw %}{{ $labels.pool }}{% endraw %} has checksum errors."
 
       - alert: ZfsVdevNotOnline
         expr: zfs_vdev_health{state="ONLINE"} == 0
@@ -43,8 +43,8 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: "ZFS vdev unhealthy on {{ \"{{ $labels.instance }}\" }}"
-          description: "Vdev {{ \"{{ $labels.vdev }}\" }} in pool {{ \"{{ $labels.pool }}\" }} is not ONLINE."
+          summary: "ZFS vdev unhealthy on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Vdev {% raw %}{{ $labels.vdev }}{% endraw %} in pool {% raw %}{{ $labels.pool }}{% endraw %} is not ONLINE."
 
       - alert: ZfsVdevReadErrors
         expr: zfs_vdev_read_errors > 0
@@ -52,8 +52,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS vdev read errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Vdev {{ \"{{ $labels.vdev }}\" }} in pool {{ \"{{ $labels.pool }}\" }} has read errors."
+          summary: "ZFS vdev read errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Vdev {% raw %}{{ $labels.vdev }}{% endraw %} in pool {% raw %}{{ $labels.pool }}{% endraw %} has read errors."
 
       - alert: ZfsVdevWriteErrors
         expr: zfs_vdev_write_errors > 0
@@ -61,8 +61,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS vdev write errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Vdev {{ \"{{ $labels.vdev }}\" }} in pool {{ \"{{ $labels.pool }}\" }} has write errors."
+          summary: "ZFS vdev write errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Vdev {% raw %}{{ $labels.vdev }}{% endraw %} in pool {% raw %}{{ $labels.pool }}{% endraw %} has write errors."
 
       - alert: ZfsVdevChecksumErrors
         expr: zfs_vdev_checksum_errors > 0
@@ -70,5 +70,5 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "ZFS vdev checksum errors on {{ \"{{ $labels.instance }}\" }}"
-          description: "Vdev {{ \"{{ $labels.vdev }}\" }} in pool {{ \"{{ $labels.pool }}\" }} has checksum errors."
+          summary: "ZFS vdev checksum errors on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Vdev {% raw %}{{ $labels.vdev }}{% endraw %} in pool {% raw %}{{ $labels.pool }}{% endraw %} has checksum errors."

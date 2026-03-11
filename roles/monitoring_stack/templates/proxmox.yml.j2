@@ -7,8 +7,8 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: "Node exporter down on {{ \"{{ $labels.instance }}\" }}"
-          description: "Prometheus cannot scrape node exporter on {{ \"{{ $labels.instance }}\" }}."
+          summary: "Node exporter down on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Prometheus cannot scrape node exporter on {% raw %}{{ $labels.instance }}{% endraw %}."
 
       - alert: ProxmoxAPIExporterDown
         expr: up{job="proxmox"} == 0
@@ -16,8 +16,8 @@ groups:
         labels:
           severity: critical
         annotations:
-          summary: "Proxmox exporter path down for {{ \"{{ $labels.instance }}\" }}"
-          description: "Prometheus cannot scrape Proxmox metrics for {{ \"{{ $labels.instance }}\" }} through pve-exporter."
+          summary: "Proxmox exporter path down for {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Prometheus cannot scrape Proxmox metrics for {% raw %}{{ $labels.instance }}{% endraw %} through pve-exporter."
 
       - alert: ProxmoxNodeNotReporting
         expr: pve_up == 0
@@ -34,7 +34,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High CPU usage on {{ \"{{ $labels.instance }}\" }}"
+          summary: "High CPU usage on {% raw %}{{ $labels.instance }}{% endraw %}"
           description: "CPU usage has been above 90% for 10 minutes."
 
       - alert: ProxmoxHighMemory
@@ -43,7 +43,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High memory usage on {{ \"{{ $labels.instance }}\" }}"
+          summary: "High memory usage on {% raw %}{{ $labels.instance }}{% endraw %}"
           description: "Memory usage has been above 90% for 10 minutes."
 
       - alert: ProxmoxFilesystemLowSpace
@@ -52,8 +52,8 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "Low filesystem space on {{ \"{{ $labels.instance }}\" }}"
-          description: "Filesystem {{ \"{{ $labels.mountpoint }}\" }} on {{ \"{{ $labels.instance }}\" }} has less than 10% free space."
+          summary: "Low filesystem space on {% raw %}{{ $labels.instance }}{% endraw %}"
+          description: "Filesystem {% raw %}{{ $labels.mountpoint }}{% endraw %} on {% raw %}{{ $labels.instance }}{% endraw %} has less than 10% free space."
 
       - alert: ProxmoxSystemLoadHigh
         expr: node_load15{job="node"} > 8
@@ -61,7 +61,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "High 15-minute load on {{ \"{{ $labels.instance }}\" }}"
+          summary: "High 15-minute load on {% raw %}{{ $labels.instance }}{% endraw %}"
           description: "System load has remained high for 15 minutes."
 
       - alert: ProxmoxRebootRequired
@@ -70,7 +70,7 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "Reboot required on {{ \"{{ $labels.instance }}\" }}"
+          summary: "Reboot required on {% raw %}{{ $labels.instance }}{% endraw %}"
           description: "The node reports that a reboot is required."
 
       - alert: ProxmoxSystemdNotRunning
@@ -79,5 +79,5 @@ groups:
         labels:
           severity: warning
         annotations:
-          summary: "Systemd not in running state on {{ \"{{ $labels.instance }}\" }}"
+          summary: "Systemd not in running state on {% raw %}{{ $labels.instance }}{% endraw %}"
           description: "node_exporter reports systemd is not in running state."
