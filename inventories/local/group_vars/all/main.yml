@@ -23,6 +23,11 @@ ceph_targets:
   - 192.168.45.2:9283
   - 192.168.45.3:9283
 
+smartctl_targets:
+  - 192.168.45.1:9633
+  - 192.168.45.2:9633
+  - 192.168.45.3:9633
+
 grafana_dashboards:
   - dashboard_id: 1860
     revision: 37
