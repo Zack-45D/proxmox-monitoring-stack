@@ -20,16 +20,26 @@
         | list
       }}
 
-- name: Build smartctl target list from inventory
+- name: Initialize smartctl target list
+  ansible.builtin.set_fact:
+    smartctl_targets: []
+
+- name: Add smartctl targets with hostname labels
   ansible.builtin.set_fact:
     smartctl_targets: >-
       {{
-        groups['proxmox']
-        | default([])
-        | map('extract', hostvars, 'ansible_host')
-        | map('regex_replace', '$', ':9633')
-        | list
+        smartctl_targets + [
+          {
+            'targets': [hostvars[item].ansible_host ~ ':9633'],
+            'labels': {
+              'node': item
+            }
+          }
+        ]
       }}
+  loop: "{{ groups['proxmox'] | default([]) }}"
+  loop_control:
+    label: "{{ item }}"
 
 - name: Build ceph target list from inventory
   ansible.builtin.set_fact:
