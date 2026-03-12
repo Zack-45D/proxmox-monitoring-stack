@@ -1480,109 +1480,134 @@
   "templating": {
     "list": [
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(smartctl_version,instance)",
-        "includeAll": true,
-        "multi": true,
         "name": "node",
-        "options": [],
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(smartctl_device,instance)",
         "query": {
           "qryType": 1,
-          "query": "label_values(smartctl_version,instance)",
+          "query": "label_values(smartctl_device,instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
         "sort": 1,
-        "type": "query"
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "regex": ""
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(smartctl_device,device)",
-        "includeAll": true,
-        "multi": true,
         "name": "disk",
-        "options": [],
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(smartctl_device{instance=~\"$node\"},device)",
         "query": {
           "qryType": 1,
-          "query": "label_values(smartctl_device,device)",
+          "query": "label_values(smartctl_device{instance=~\"$node\"},device)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
         "sort": 1,
-        "type": "query"
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "regex": ""
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(smartctl_device,interface)",
-        "includeAll": true,
-        "multi": true,
         "name": "type",
-        "options": [],
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\"},interface)",
         "query": {
           "qryType": 1,
-          "query": "label_values(smartctl_device,interface)",
+          "query": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\"},interface)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
         "sort": 1,
-        "type": "query"
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "regex": ""
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "label_values(smartctl_device,model_name)",
-        "includeAll": true,
-        "multi": true,
         "name": "device_model",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(smartctl_device,model_name)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "sort": 1,
-        "type": "query"
-      },
-      {
-        "current": {},
+        "type": "query",
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "prometheus"
         },
-        "definition": "label_values(smartctl_device,serial_number)",
-        "includeAll": true,
-        "multi": true,
-        "name": "serial_number",
-        "options": [],
+        "definition": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\",interface=~\"$type\"},model_name)",
         "query": {
           "qryType": 1,
-          "query": "label_values(smartctl_device,serial_number)",
+          "query": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\",interface=~\"$type\"},model_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
-        "regex": "",
         "sort": 1,
-        "type": "query"
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "regex": ""
+      },
+      {
+        "name": "serial_number",
+        "type": "query",
+        "datasource": {
+          "type": "prometheus",
+          "uid": "prometheus"
+        },
+        "definition": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\",interface=~\"$type\",model_name=~\"$device_model\"},serial_number)",
+        "query": {
+          "qryType": 1,
+          "query": "label_values(smartctl_device{instance=~\"$node\",device=~\"$disk\",interface=~\"$type\",model_name=~\"$device_model\"},serial_number)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "sort": 1,
+        "multi": true,
+        "includeAll": true,
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": "All",
+          "value": "$__all"
+        },
+        "options": [],
+        "regex": ""
       }
     ]
   },
