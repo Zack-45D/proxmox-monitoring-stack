@@ -3,7 +3,7 @@
 Ansible-based deployment for Prometheus, Alertmanager, Grafana, pve-exporter, node exporter targets, and Ceph monitoring.
 
 Run this **after** completing [proxmox-prepare](https://github.com/45Drives/proxmox-prepare) on your Proxmox hosts.
-
+To be done in the VM
 ---
 
 ## Prerequisites
