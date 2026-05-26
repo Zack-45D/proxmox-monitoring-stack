@@ -8,6 +8,12 @@ To be done in the VM
 
 ## Prerequisites
 
+When booting the VM copy the ssh key from the proxmox nodes to the VM
+
+```bash
+ssh-copy-id root@IP
+```
+
 ### Proxmox nodes
 Ensure you have already run the `proxmox-prepare` playbook on your Proxmox hosts and created a Prometheus API token:
 
